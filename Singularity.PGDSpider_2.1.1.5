@@ -1,0 +1,19 @@
+Bootstrap: debootstrap
+OSVersion: xenial
+MirrorURL: http://archive.ubuntu.com/ubuntu/
+Include: build-essential language-pack-en wget unzip openjdk-8-jre
+
+%labels
+
+	MAINTAINER "Marissa Le Lec"
+	VERSION "PGDSpider 2.1.1.5"
+
+%post
+	
+	wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip
+	unzip PGDSpider_2.1.1.5.zip
+	cp PGDSpider_2.1.1.5/PGDSpider2-cli.jar /usr/local/bin/
+	rm -rf PGDSpider_2.1.1.5
+	
+
+%runscript java -jar PGDSpider2-cli.jar "?@"
