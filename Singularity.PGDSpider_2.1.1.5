@@ -1,7 +1,5 @@
-Bootstrap: debootstrap
-OSVersion: xenial
-MirrorURL: http://archive.ubuntu.com/ubuntu/
-Include: build-essential language-pack-en wget unzip openjdk-8-jre
+Bootstrap: docker
+From: ubuntu:18.04
 
 %labels
 
@@ -9,13 +7,21 @@ Include: build-essential language-pack-en wget unzip openjdk-8-jre
 	VERSION "PGDSpider 2.1.1.5"
 
 %post
-	
+
+	apt-get update
+	apt-get install -y build-essential language-pack-en wget unzip openjdk-8-jre
 	wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.1.5.zip
 	unzip PGDSpider_2.1.1.5.zip
-	cp PGDSpider_2.1.1.5/PGDSpider2-cli.jar /usr/local/bin/
-	rm -rf PGDSpider_2.1.1.5
+	cp -r PGDSpider_2.1.1.5 /opt/pgdspider
+	ln -s /opt/pgdspider/PGDSpider2-cli.jar ${SINGULARITY_ROOTFS}/PGDSpider2-cli.jar 
+	rm -r PGDSpider_2.1.1.5
+
+%environment
 	
+	export PATH="${PATH}:/opt/pgdspider"
 
-%runscript 
+%runscript
 
-	exec java -jar PGDSpider2-cli.jar "?@"
+	/usr/bin/java -jar /opt/pgdspider/PGDSpider2-cli.jar "?@"
+
+
