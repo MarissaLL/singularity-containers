@@ -7,7 +7,7 @@ Include: build-essential language-pack-en wget autoconf automake pkg-config zlib
 %labels
 
         MAINTAINER "Marissa Le Lec"
-        VERSION "VCFtools 0.1.16"
+        VERSION "VCFtools 0.1.17"
 
 %post
         
