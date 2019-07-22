@@ -5,7 +5,7 @@ Include: build-essential language-pack-en wget autoconf automake pkg-config zlib
 
 %labels
 
-	MAINTAINER "Marissa Le Lec"
+	MAINTAINER "Marissa Le Lec marissa.lelec@gmail.com"
 	VERSION "STAR 2.7.1a"
 
 %post
