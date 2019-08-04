@@ -11,7 +11,7 @@ Include: build-essential language-pack-en wget autoconf automake pkg-config zlib
 %post
 
 	cd /usr/bin/
-	git clone https://github.com/vcflib/vcflib.git --recursive --no-check-certificate
+	git clone https://github.com/vcflib/vcflib.git --recursive 
 	make openmp
 
 %environment
