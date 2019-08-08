@@ -13,10 +13,10 @@ Include: build-essential language-pack-en wget autoconf automake pkg-config zlib
 	wget https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2 --no-check-certificate
 	tar -xvf bcftools-1.9.tar.bz2 
 	cd bcftools-1.9
-	./configure --prefix=/usr/bin
+	./configure --prefix=/usr/
 	make
 	make install
 
 %runscript
 
-        exec /usr/bin/bin/bcftools "$@"
+        exec /usr/bin/bcftools "$@"
