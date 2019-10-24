@@ -14,7 +14,7 @@ From: bioconductor/release_base2:R3.6.0_Bioc3.9
 %post
     # install packages from bioconductor
     Rscript -e "options(Ncpus=8); \
-        BiocManager::install(pkgs = c('tidyverse', 'scales'), ask=FALSE)"
+        BiocManager::install(pkgs = c('data.table', tidyverse', 'scales'), ask=FALSE)"
 
 %runscript
 
