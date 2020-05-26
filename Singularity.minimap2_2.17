@@ -1,0 +1,14 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://archive.ubuntu.com/ubuntu/
+Include: build-essential language-pack-en git zlib1g-dev
+
+
+%post
+	export GIT_SSL_NO_VERIFY=1
+	git clone https://github.com/lh3/minimap2
+	cd minimap2 || exit 1
+	make
+	cp minimap2 /usr/local/bin/
+	cd ../.. || exit 1
+	rm -rf minimap2/
