@@ -1,5 +1,6 @@
-Bootstrap:docker
-From:ubuntu:18.04
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %labels
 	VERSION "minimap2 2.177-r974-dirty"
