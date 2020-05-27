@@ -1,10 +1,19 @@
-Bootstrap: debootstrap
-OSVersion: bionic
-MirrorURL: http://archive.ubuntu.com/ubuntu/
-Include: build-essential language-pack-en git zlib1g-dev
+Bootstrap: docker
+From: ubuntu:18.04
 
+%labels
+	VERSION "minimap2 2.177-r974-dirty"
 
 %post
+	# dependencies
+    apt-get update
+    apt-get install -y \
+        build-essential \
+        language-pack-en \
+        git \
+        zlib1g-dev 
+
+    # minimap2
 	export GIT_SSL_NO_VERIFY=1
 	git clone https://github.com/lh3/minimap2
 	cd minimap2 || exit 1
@@ -12,3 +21,6 @@ Include: build-essential language-pack-en git zlib1g-dev
 	cp minimap2 /usr/local/bin/
 	cd ../.. || exit 1
 	rm -rf minimap2/
+
+%runscript
+	exec /usr/local/bin/minimap2 "$@"
