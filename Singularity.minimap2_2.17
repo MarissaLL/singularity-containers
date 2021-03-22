@@ -2,6 +2,7 @@ Bootstrap: docker
 From: ubuntu:18.04
 
 %labels
+	MAINTAINER "Marissa Le Lec"
 	VERSION "minimap2 2.177-r974-dirty"
 
 %post
