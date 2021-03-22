@@ -19,9 +19,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 	git clone https://github.com/lh3/minimap2
 	cd minimap2 || exit 1
 	make
-	cp minimap2 /usr/local/bin/
+	cp minimap2 /usr/bin/
 	cd ../.. || exit 1
 	rm -rf minimap2/
 
 %runscript
-	exec /usr/local/bin/minimap2 "$@"
+	exec /usr/bin/minimap2 "$@"
