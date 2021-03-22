@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+
+    MAINTAINER "Marissa Le Lec"
+    VERSION "longshot 22nd March 2021"
+
+%environment
+  export  PATH=/home/marissa/.cargo/bin:$PATH
+
+%post
+ # install dependencies
+    apt-get update
+    apt-get install -y \
+        build-essential \
+        language-pack-en \
+        cargo \
+        zlib1g-dev \
+        xz-utils \
+        libclang-dev \
+        clang \
+        curl \
+        git \
+
+
+    # install longshot
+    git clone https://github.com/pjedge/longshot
+    cd longshot || exit 1
+    cargo install --path .
